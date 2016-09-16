@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { ProbeList } from "../model/Probe";
 
 type ApplicationProperties = { loaded: boolean, probes: ProbeList }
+
 const mapStateToProps = (state) => {
 	return {
 		loaded: state.application.loaded,
@@ -24,10 +25,10 @@ export class Application extends React.Component<any, any> {
 			return <CurrentValueWidget key={index} probe={probe} value="0"></CurrentValueWidget>;
 		};
 
-		console.log(this.props);
+		let probes = this.props.probes.probes;
 
 		return <div>
-			{ this.props.probes.map(renderCurrentValueWidget) }
+			{ probes.map(renderCurrentValueWidget) }
 			</div>;
 	}
 }
